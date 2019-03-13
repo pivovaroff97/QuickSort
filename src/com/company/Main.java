@@ -5,39 +5,28 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static int[] mas = new int[10000];
 
     public static void main(String[] args) {
-        Random generator = new Random();
-        for (int i = 0; i < mas.length; i++) {  // создаем массив
-            mas[i] = generator.nextInt(10000);
-        }
-       /* Scanner scanner = new Scanner(System.in);
+
+        Scanner scanner = new Scanner(System.in);
         int lenght = scanner.nextInt();
         int[] mas = new int[lenght];
         for (int i = 0; i < lenght; i++) {
             int x = scanner.nextInt();
             mas[i] = x;
-        }*/
+        }
 
-        long startTime = System.currentTimeMillis();
         int begin = 0;
         int end = mas.length - 1;
-        //System.out.println(Arrays.toString(mas));
-        int separator = toSeparate(begin, end, mas); // номер первого нечетного числа массива
+        int separator = toSeparate(begin, end, mas);
 
         quickSort(0, separator - 1, mas);
         quickSort(separator, end, mas);
         for (int i = 0; i < separator; i++) System.out.print(mas[i] + " ");
         for (int i = mas.length - 1; i >= separator; i--) System.out.print(mas[i] + " ");
-
-       // System.out.println(Arrays.toString(mas));
-        long spentTime = System.currentTimeMillis() - startTime;
-        System.out.println();
-        System.out.println(spentTime);
     }
 
-    public static int toSeparate(int begin, int end, int[] mas) { //разделение на подмассивы четных и нечетных чисел
+    public static int toSeparate(int begin, int end, int[] mas) {
         int separator = (begin + end)/2;
         int i = begin;
         int j = end;
@@ -60,8 +49,8 @@ public class Main {
         return separator;
     }
 
-    public static void quickSort(int begin, int end, int[] mas) { // сортировка по возрастанию
-        if (begin >= end) return;         // добавлять метку? записать все в одном методе?
+    public static void quickSort(int begin, int end, int[] mas) {
+        if (begin >= end) return;
         int midValue = (begin + end)/2;
         int i = begin;
         int j = end;
